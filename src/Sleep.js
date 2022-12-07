@@ -6,6 +6,13 @@ class Sleep {
     this.currentUser = currentUser;
     this.sleepData = data.sleepData;
   }
+
+  averageUserSleepAllTime() {
+    const total = this.userSleepInfo.map(hrs => {
+      return hrs.hoursSlept
+    })
+    return total
+  }
 }
 
 export default Sleep;
