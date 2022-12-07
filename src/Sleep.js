@@ -7,6 +7,16 @@ class Sleep {
     this.sleepData = data.sleepData;
   }
 
+  averageHoursSlept() {
+    const total = this.userSleepInfo.map(hrs => {
+      return hrs.hoursSlept
+    }).reduce((totalSleepHrs, sleepHrs) => {
+      return totalSleepHrs += sleepHrs
+    })
+    const average = total / this.userSleepInfo.length
+    return average.toFixed(1)
+  }
+
   averageSleepQuality(){
     return (this.userSleepInfo.map(day => day.sleepQuality).reduce((a, b) => a + b) / this.userSleepInfo.length).toFixed(1)
   }
@@ -17,6 +27,7 @@ class Sleep {
 
   getSleepQuality(date) {
     return this.userSleepInfo.find(item => item.date === date).sleepQuality
+
   }
 }
 
