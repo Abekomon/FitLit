@@ -10,8 +10,10 @@ class Sleep {
   averageUserSleepAllTime() {
     const total = this.userSleepInfo.map(hrs => {
       return hrs.hoursSlept
+    }).reduce((totalSleepHrs, sleepHrs) => {
+      return totalSleepHrs += sleepHrs
     })
-    return total
+    return total / this.userSleepInfo.length
   }
 }
 
