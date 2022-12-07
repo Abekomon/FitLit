@@ -28,6 +28,14 @@ class Sleep {
       .slice(index - 6, index + 1)
       .map((day) => (day = { date: day.date, sleepQuality: day.sleepQuality }));
   }
+
+  getHoursSlept(date) {
+    return this.userSleepInfo.find(item => item.date === date).hoursSlept
+  }
+
+  getSleepQuality(date) {
+    return this.userSleepInfo.find(item => item.date === date).sleepQuality
+  }
 }
 
 export default Sleep;

@@ -203,19 +203,19 @@ describe("User Sleep", () => {
     ]);
   });
 
-  it.skip("Should have a method that returns the average hours slept per user", () => {
+  it("Should have a method that returns the average hours slept per user", () => {
     expect(userSleep.averageHoursSlept()).to.equal("8.1");
   });
 
-  it.skip("Should have a method that returns a user's average sleep quality per day", () => {
+  it("Should have a method that returns a user's average sleep quality per day", () => {
     expect(userSleep.averageSleepQuality()).to.equal("2.6");
   });
 
-  it.skip("Should have a method that returns the hours slept for a given date", () => {
+  it("Should have a method that returns the hours slept for a given date", () => {
     expect(userSleep.getHoursSlept("2019/06/18")).to.equal(10.4);
   });
 
-  it.skip("Should have a method that returns the sleep quality for a given date", () => {
+  it("Should have a method that returns the sleep quality for a given date", () => {
     expect(userSleep.getSleepQuality("2019/06/21")).to.equal(4.2);
   });
 
@@ -285,7 +285,7 @@ describe("User Sleep", () => {
     ]);
   });
 
-  it.skip("Should have a method that returns the average sleep quality of all users", () => {
+  it("Should have a method that returns the average sleep quality of all users", () => {
     expect(userSleep.averageAllSleepQuality()).to.equal("3.1");
   });
 });
