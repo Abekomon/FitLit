@@ -6,15 +6,17 @@ class Sleep {
     this.currentUser = currentUser;
     this.sleepData = data.sleepData;
   }
-  
-   averageHoursSlept() {
-    const total = this.userSleepInfo.map(hrs => {
-      return hrs.hoursSlept
-    }).reduce((totalSleepHrs, sleepHrs) => {
-      return totalSleepHrs += sleepHrs
-    })
-    const average = total / this.userSleepInfo.length
-    return average.toFixed(1)
+
+  averageHoursSlept() {
+    const total = this.userSleepInfo
+      .map((hrs) => {
+        return hrs.hoursSlept;
+      })
+      .reduce((totalSleepHrs, sleepHrs) => {
+        return (totalSleepHrs += sleepHrs);
+      });
+    const average = total / this.userSleepInfo.length;
+    return average.toFixed(1);
   }
 
   getWeeklyHoursSlept(date) {
@@ -29,17 +31,22 @@ class Sleep {
     return this.userSleepInfo
       .slice(index - 6, index + 1)
       .map((day) => (day = { date: day.date, sleepQuality: day.sleepQuality }));
+  }
 
-  averageSleepQuality(){
-    return (this.userSleepInfo.map(day => day.sleepQuality).reduce((a, b) => a + b) / this.userSleepInfo.length).toFixed(1)
+  averageSleepQuality() {
+    return (
+      this.userSleepInfo
+        .map((day) => day.sleepQuality)
+        .reduce((a, b) => a + b) / this.userSleepInfo.length
+    ).toFixed(1);
   }
 
   getHoursSlept(date) {
-    return this.userSleepInfo.find(item => item.date === date).hoursSlept
+    return this.userSleepInfo.find((item) => item.date === date).hoursSlept;
   }
 
   getSleepQuality(date) {
-    return this.userSleepInfo.find(item => item.date === date).sleepQuality
+    return this.userSleepInfo.find((item) => item.date === date).sleepQuality;
   }
 }
 
