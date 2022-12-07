@@ -211,11 +211,11 @@ describe('User Sleep', () => {
     expect(userSleep.averageSleepQuality()).to.equal('2.6');
   });
 
-  it.skip('Should have a method that returns the hours slept for a given date', () => {
+  it('Should have a method that returns the hours slept for a given date', () => {
     expect(userSleep.getHoursSlept('2019/06/18')).to.equal(10.4);
   });
 
-  it.skip('Should have a method that returns the sleep quality for a given date', () => {
+  it('Should have a method that returns the sleep quality for a given date', () => {
     expect(userSleep.getSleepQuality('2019/06/21')).to.equal(4.2);
   });
 
