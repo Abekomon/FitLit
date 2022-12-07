@@ -10,6 +10,14 @@ class Sleep {
   averageSleepQuality(){
     return (this.userSleepInfo.map(day => day.sleepQuality).reduce((a, b) => a + b) / this.userSleepInfo.length).toFixed(1)
   }
+
+  getHoursSlept(date) {
+    return this.userSleepInfo.find(item => item.date === date).hoursSlept
+  }
+
+  getSleepQuality(date) {
+    return this.userSleepInfo.find(item => item.date === date).sleepQuality
+  }
 }
 
 export default Sleep;
