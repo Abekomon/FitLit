@@ -203,11 +203,11 @@ describe('User Sleep', () => {
     ]);
   });
 
-  it.skip('Should have a method that returns the average hours slept per user', () => {
+  it('Should have a method that returns the average hours slept per user', () => {
     expect(userSleep.averageHoursSlept()).to.equal('8.1');
   });
 
-  it.skip('Should have a method that returns a user\'s average sleep quality per day', () => {
+  it('Should have a method that returns a user\'s average sleep quality per day', () => {
     expect(userSleep.averageSleepQuality()).to.equal('2.6');
   });
 
