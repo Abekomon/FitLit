@@ -110,7 +110,7 @@ const weeklyHydrationChart = new Chart(ctx, {
   data: {
     labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
     datasets: [{
-      label: 'Ounces of water consumed',
+      label: `Ounces of water consumed daily after ${userHydration.weekHydration()[0].date}` ,
       data: userHydration.weekHydration().map(item => item.numOunces),
       borderWidth: 1
     }]
