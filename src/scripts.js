@@ -53,11 +53,12 @@ function randomizeCurrentUser() {
 }
 
 function displayCurrentUserInfo() {
-  userInfoCard.innerText = `Name: ${currentUser.name}
-  Address: ${currentUser.address}
-  Email: ${currentUser.email}
-  Stride Length: ${currentUser.strideLength} feet
-  Daily Step Goal: ${currentUser.dailyStepGoal} steps`;
+  userInfoCard.innerHTML = `
+  <p><span>Name:</span> ${currentUser.name} </p>
+  <p><span>Address:</span> ${currentUser.address}</p>
+  <p><span>Email:</span> ${currentUser.email}</p>
+  <p><span>Stride Length:</span> ${currentUser.strideLength} feet</p>
+  <p><span>Daily Step Goal:</span> ${currentUser.dailyStepGoal} steps</p>`;
 }
 
 function compareAndDisplayStepsGoal() {
