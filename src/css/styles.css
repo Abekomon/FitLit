@@ -77,3 +77,35 @@ body {
   padding: 25px;
   box-shadow: 0 0 10px 3px lightblue;
 }
+
+.hydration1-widget {
+  padding-top: 2vh;
+  text-align: center;
+  font-size: 2vw;
+}
+
+.hydration1-widget > h2{
+  padding-top: 3vh;
+  font-size: 7vw;
+}
+
+.sleep2-widget {
+  padding-top: 2vh;
+  text-align: center;
+  font-size: 2vw;
+}
+
+.sleep2-widget > div {
+  padding-top: 1vh;
+  font-size: 4vw;
+}
+
+.sleep1-widget{
+  padding-top: 2vh;
+  font-size: 2vw;
+}
+
+.sleep1-widget > div {
+  padding-top: 1vh;
+  font-size: 4vw;
+}
