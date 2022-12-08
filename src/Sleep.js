@@ -48,6 +48,18 @@ class Sleep {
   getSleepQuality(date) {
     return this.userSleepInfo.find((item) => item.date === date).sleepQuality;
   }
+
+  averageAllSleepQuality() {
+    const allUsersSleepQuality = this.sleepData.map(sleepQualityData => {
+      return sleepQualityData.sleepQuality
+    }).reduce((totalQuality, quality) => {
+        let total = totalQuality += quality
+         return total
+       })
+
+    const average = allUsersSleepQuality / this.sleepData.length
+    return average.toFixed(1)
+  }
 }
 
 export default Sleep;
