@@ -90,10 +90,11 @@ function displayHydrationWidgets() {
 
 function displayTodaysHydration(userHydration) {
   todayConsumedWaterCard.innerHTML = `<p class="todays-hydration">
-  Today you have consumed ${userHydration.givenDayHydration(
+  Hydration Today
+  <h2> ${userHydration.givenDayHydration(
     userHydration.userHydrationInfo[userHydration.userHydrationInfo.length - 1]
       .date
-  )} ounces of water.
+  )}oz. </h2>
   </p>`;
 }
 
@@ -135,11 +136,12 @@ function displaySleepWidgets() {
 
 function displayTodaySleep(userSleep) {
   todaySleepCard.innerHTML = `<p class="todays-sleep">
-    Today you slept ${userSleep.getHoursSlept(
+    Sleep Today
+    <div> ${userSleep.getHoursSlept(
     userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date
-  )} hours and had a sleep quality of ${userSleep.getSleepQuality(
+  )} hours</div> <div> ${userSleep.getSleepQuality(
     userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date
-  )}
+  )} out of 5</div>
   </p>`;
 }
 
@@ -154,7 +156,8 @@ function displayWeekSleep(userSleep){
 
 function displayAllTimeSleep(userSleep) {
   allTimeSleepCard.innerHTML = `<p class="all-time-sleep">
-    You sleep an average of ${userSleep.averageHoursSlept()} hours and have an average sleep quality of ${userSleep.averageSleepQuality()}
+  Sleep All-Time
+    <div> ${userSleep.averageHoursSlept()} hours </div> <div> ${userSleep.averageSleepQuality()} out of 5 </div>
   </p>`;
 }
 

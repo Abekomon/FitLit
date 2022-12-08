@@ -1,6 +1,7 @@
 *, html {
   margin:0;
   padding:0;  
+  box-sizing: border-box;
 }
 
 /* body, html {
@@ -57,8 +58,40 @@ body {
 .card{
   height:30vh;
   width:30vw;
+  text-align: center;
   border: 1px solid;
   background-color: #FAF9F6;
 }
 
+.hydration1-widget {
+  padding-top: 2vh;
+  text-align: center;
+  font-size: 2vw;
+}
+
+.hydration1-widget > h2{
+  padding-top: 3vh;
+  font-size: 7vw;
+}
+
+.sleep2-widget {
+  padding-top: 2vh;
+  text-align: center;
+  font-size: 2vw;
+}
+
+.sleep2-widget > div {
+  padding-top: 1vh;
+  font-size: 4vw;
+}
+
+.sleep1-widget{
+  padding-top: 2vh;
+  font-size: 2vw;
+}
+
+.sleep1-widget > div {
+  padding-top: 1vh;
+  font-size: 4vw;
+}
 
