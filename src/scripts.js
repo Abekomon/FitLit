@@ -4,6 +4,7 @@ import UserRepository from "./UserRepository";
 import returnDataPromises from "./apiCalls";
 import Hydration from "./Hydration";
 import Sleep from "./Sleep";
+import Chart from 'chart.js/auto';
 
 //// query selectors
 const userInfoCard = document.querySelector(".user-info");
@@ -21,6 +22,7 @@ let sleepData;
 let hydrationData;
 let userRepository;
 let currentUser;
+
 
 ////functions
 function fetchApiCalls() {
@@ -96,13 +98,32 @@ function displayTodaysHydration(userHydration) {
 }
 
 function displayWeekHydration(userHydration) {
-  console.log("week hydration", userHydration.weekHydration());
-  userHydration.weekHydration().forEach((item) => {
-    weekHydrationCard.innerHTML += `<p class="weekly-hydration-item">
-  ${item.date} : ${item.numOunces}oz of water consumed
-  </p>`;
-  });
-  weekHydrationCard;
+  // userHydration.weekHydration().forEach((item) => {
+  //   weekHydrationCard.innerHTML += `<p class="weekly-hydration-item">
+  // ${item.date} : ${item.numOunces}oz of water consumed
+  // </p>`;
+  // });
+  weekHydrationCard.innerHTML = `<canvas id="weeklyHydrationChart"></canvas>`
+  const ctx = document.getElementById('weeklyHydrationChart').getContext('2d');
+const weeklyHydrationChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+    datasets: [{
+      label: 'Ounces of water consumed',
+      data: userHydration.weekHydration().map(item => item.numOunces),
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+  
 }
 
 function displaySleepWidgets() {
