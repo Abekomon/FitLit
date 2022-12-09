@@ -147,11 +147,48 @@ function displayTodaySleep(userSleep) {
 }
 
 function displayWeekSleep(userSleep){
-  userSleep.getWeeklyHoursSlept(userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date).forEach((item, index) => {
-    const userSleepQuality = userSleep.getWeeklySleepQuality(userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date)[index]
-    weekSleepCard.innerHTML += `<p class="weekly-sleep-item">
-  ${item.date} : ${item.hoursSlept} hours ${userSleepQuality.sleepQuality} quality
-  </p>`;
+  // userSleep.getWeeklyHoursSlept(userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date).forEach((item, index) => {
+  //   const userSleepQuality = userSleep.getWeeklySleepQuality(userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date)[index]
+  //   weekSleepCard.innerHTML += `<p class="weekly-sleep-item">
+  // ${item.date} : ${item.hoursSlept} hours ${userSleepQuality.sleepQuality} quality
+  // </p>`;
+  // });
+  weekSleepCard.innerHTML = `<canvas id="weeklySleepChart"></canvas>`
+  let sleepChartCanvas = document.getElementById('weeklySleepChart').getContext('2d');
+
+  let hoursSleptData = {
+    label: `Hours Slept week starting ${userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date}`,
+    data: userSleep.getWeeklyHoursSlept(userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date).map(item => item.hoursSlept),
+    lineTension: 0,
+    fill: false,
+    borderColor: 'blue'
+  };
+  let sleepQualityData = {
+    label: `Sleep Quality Week Starting ${userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date}`,
+    data: userSleep.getWeeklySleepQuality(userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date).map(item => item.sleepQuality),
+    lineTension: 0,
+    fill: false,
+    borderColor: 'green'
+  };
+  let sleepData = {
+    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+    datasets: [hoursSleptData, sleepQualityData]
+  };
+  let chartOptions = {
+    legend: {
+      display: true,
+      position: 'top',
+      labels: {
+        boxWidth: 80,
+        fontColor: 'black'
+      }
+    }
+  };
+
+  new Chart(sleepChartCanvas, {
+    type: 'line',
+    data: sleepData,
+    options: chartOptions
   });
 }
 
