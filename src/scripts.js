@@ -72,7 +72,7 @@ function compareAndDisplayStepsGoal() {
 
 function displayStepsGoalComparison(numberRanked) {
   stepsWidgetCard.innerHTML = `
-  <h1 class="step-goal-widget-title">Your step goal</h1>
+  <h1 class="step-goal-widget-title">Step Goal</h1>
   <p class="steps-widget-info">
     Your step goal is: ${currentUser.dailyStepGoal}.<br>
     The average step goal of all users is ${userRepository.returnAverageDailyStepGoal()}. <br>

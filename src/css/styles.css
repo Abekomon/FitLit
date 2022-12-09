@@ -50,6 +50,16 @@ body {
   flex-direction: row;
 }
 
+.step-goal-widget-title {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.steps-widget-info {
+  line-height: 2;
+  font-size: 19px;
+}
+
 .non-sleep-widgets-container{
   width:40vw;
   height: 100vh;
