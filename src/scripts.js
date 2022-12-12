@@ -72,7 +72,7 @@ function compareAndDisplayStepsGoal() {
 
 function displayStepsGoalComparison(numberRanked) {
   stepsWidgetCard.innerHTML = `
-  <h1 class="step-goal-widget-title">Step Goal</h1>
+  <h2 class="step-goal-widget-title">Step Goal</h2>
   <p class="steps-widget-info">
     Your step goal is: ${currentUser.dailyStepGoal}.<br>
     The average step goal of all users is ${userRepository.returnAverageDailyStepGoal()}. <br>
@@ -90,24 +90,17 @@ function displayHydrationWidgets() {
 }
 
 function displayTodaysHydration(userHydration) {
-  todayConsumedWaterCard.innerHTML = `<p class="todays-hydration">
-  Hydration Today
-  <h2> ${userHydration.givenDayHydration(
+  todayConsumedWaterCard.innerHTML = `<h2 class="todays-hydration">
+  Hydration Today<h2>
+  <p> ${userHydration.givenDayHydration(
     userHydration.userHydrationInfo[userHydration.userHydrationInfo.length - 1]
-      .date
-  )}oz. </h2>
-  </p>`;
+      .date)}oz. </p>`;
 }
 
 function displayWeekHydration(userHydration) {
-  // userHydration.weekHydration().forEach((item) => {
-  //   weekHydrationCard.innerHTML += `<p class="weekly-hydration-item">
-  // ${item.date} : ${item.numOunces}oz of water consumed
-  // </p>`;
-  // });
   weekHydrationCard.innerHTML = `<canvas id="weeklyHydrationChart"></canvas>`
   const ctx = document.getElementById('weeklyHydrationChart').getContext('2d');
-const weeklyHydrationChart = new Chart(ctx, {
+  const weeklyHydrationChart = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
@@ -136,23 +129,16 @@ function displaySleepWidgets() {
 }
 
 function displayTodaySleep(userSleep) {
-  todaySleepCard.innerHTML = `<p class="todays-sleep">
-    Sleep Today
-    <div> ${userSleep.getHoursSlept(
+  todaySleepCard.innerHTML = `<h2 class="todays-sleep">
+    Sleep Today</h2>
+    <p> ${userSleep.getHoursSlept(
     userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date
-  )} hours</div> <div> ${userSleep.getSleepQuality(
+  )} hours</p> <p> ${userSleep.getSleepQuality(
     userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date
-  )} out of 5</div>
-  </p>`;
+  )} out of 5</p>`;
 }
 
 function displayWeekSleep(userSleep){
-  // userSleep.getWeeklyHoursSlept(userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date).forEach((item, index) => {
-  //   const userSleepQuality = userSleep.getWeeklySleepQuality(userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date)[index]
-  //   weekSleepCard.innerHTML += `<p class="weekly-sleep-item">
-  // ${item.date} : ${item.hoursSlept} hours ${userSleepQuality.sleepQuality} quality
-  // </p>`;
-  // });
   weekSleepCard.innerHTML = `<canvas id="weeklySleepChart"></canvas>`
   let sleepChartCanvas = document.getElementById('weeklySleepChart').getContext('2d');
 
@@ -193,10 +179,9 @@ function displayWeekSleep(userSleep){
 }
 
 function displayAllTimeSleep(userSleep) {
-  allTimeSleepCard.innerHTML = `<p class="all-time-sleep">
-  Sleep All-Time
-    <div> ${userSleep.averageHoursSlept()} hours </div> <div> ${userSleep.averageSleepQuality()} out of 5 </div>
-  </p>`;
+  allTimeSleepCard.innerHTML = `<h2 class="all-time-sleep">
+  Sleep All-Time</h2>
+    <p> ${userSleep.averageHoursSlept()} hours </p> <p> ${userSleep.averageSleepQuality()} out of 5 </p>`;
 }
 
 function updateWelcomeText() {
