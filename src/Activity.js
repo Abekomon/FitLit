@@ -10,8 +10,21 @@ class Activity {
     const currentStride = this.currentUser.strideLength;
     return ((this.userActivityInfo.find(day => {
       return day.date === givenDate
-    }).map(day => day.numSteps) * currentStride) / 5280).toFixed(1)
+    }).reduce((acc, curr) => {
+      return acc += curr.numSteps
+    }, 0) * currentStride) / 5280).toFixed(1)
   }
+  
+  givenDayMinutesActive(givenDate) {
+    return this.userActivityInfo.find(day => {
+      return day.date === givenDate
+    }).reduce((acc, curr) => {
+      return acc += curr.minutesActive
+    }, 0)
+  }
+
+
 }
+
 
 export default Activity;
