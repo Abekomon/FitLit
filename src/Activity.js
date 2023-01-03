@@ -8,21 +8,32 @@ class Activity {
   
   givenDayMilesWalked(givenDate) {
     const currentStride = this.currentUser.strideLength;
-    return ((this.userActivityInfo.find(day => {
-      return day.date === givenDate
-    }).reduce((acc, curr) => {
-      return acc += curr.numSteps
-    }, 0) * currentStride) / 5280).toFixed(1)
+    return ((this.userActivityInfo
+      .find(day => {
+        return day.date === givenDate
+      })
+      .reduce((acc, curr) => {
+        return acc += curr.numSteps
+      }, 0) * currentStride) / 5280).toFixed(1)
   }
   
   givenDayMinutesActive(givenDate) {
-    return this.userActivityInfo.find(day => {
-      return day.date === givenDate
-    }).reduce((acc, curr) => {
-      return acc += curr.minutesActive
-    }, 0)
+    return this.userActivityInfo
+      .find(day => {
+        return day.date === givenDate
+      })
+      .reduce((acc, curr) => {
+        return acc += curr.minutesActive
+      }, 0)
   }
 
+  getWeeklyMinutesActive() {
+    return (this.userActivityInfo
+      .slice(-7)
+      .reduce((acc, curr) => {
+        return acc += curr.minutesActive
+      }, 0) / 7).toFixed(1)
+  }
 
 }
 
