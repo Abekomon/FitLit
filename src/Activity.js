@@ -1,38 +1,31 @@
 class Activity {
   constructor(currentUser, data) {
-    this.userActivityInfo = data.activityData.filter(
+    this.userActivityInfo = data.filter(
       (day) => day.userID === currentUser.id
     );
     this.currentUser = currentUser;
   }
   
-  givenDayMilesWalked(givenDate) {
+  milesWalked(givenDate) {
     const currentStride = this.currentUser.strideLength;
-    return ((this.userActivityInfo
+    return Number(((this.userActivityInfo
       .find(day => {
         return day.date === givenDate
-      })
-      .reduce((acc, curr) => {
-        return acc += curr.numSteps
-      }, 0) * currentStride) / 5280).toFixed(1)
+      }).numSteps * currentStride) / 5280).toFixed(1))
   }
   
   givenDayMinutesActive(givenDate) {
     return this.userActivityInfo
-      .find(day => {
-        return day.date === givenDate
-      })
-      .reduce((acc, curr) => {
-        return acc += curr.minutesActive
-      }, 0)
+      .find(day => day.date === givenDate)
+      .minutesActive
   }
 
   getWeeklyMinutesActive() {
-    return (this.userActivityInfo
+    return Number((this.userActivityInfo
       .slice(-7)
       .reduce((acc, curr) => {
         return acc += curr.minutesActive
-      }, 0) / 7).toFixed(1)
+      }, 0) / 7).toFixed(1))
   }
 
 }
