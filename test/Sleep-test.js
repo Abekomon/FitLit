@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import Sleep from "../src/Sleep";
-import { allSleepInfo } from './testData'
+import { allSleepInfo } from './testData';
 
 describe("User Sleep", () => {
   let userSleep;
