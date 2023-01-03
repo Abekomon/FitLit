@@ -137,7 +137,7 @@ let allHydrationInfo = {
   ],
 };
 
-let allActivityInfo = [{
+let allActivityInfo = {activityData: [{
   userID: 1,
   date: "2019/06/15",
   numSteps: 3577,
@@ -221,6 +221,6 @@ let allActivityInfo = [{
   minutesActive: 119,
   flightsOfStairs: 6
 }
-]
+]}
 
 export { nonClassUsers, allSleepInfo, allHydrationInfo, allActivityInfo }
