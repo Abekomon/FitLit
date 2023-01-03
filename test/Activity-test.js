@@ -2,7 +2,7 @@ import { expect } from "chai";
 import Activity from "../src/Activity";
 import { allActivityInfo } from './testData'
 
-describe("User Hydration", () => {
+describe("User Activity", () => {
   let userActivity;
 
   beforeEach(() => {
@@ -88,15 +88,15 @@ describe("User Hydration", () => {
   });
 
   it("should have a method that returns the miles a user has walked for a specific day", function () {
-    expect(userActivity.milesWalked("2019/06/16")).to.equal(5.41);
+    expect(userActivity.milesWalked("2019/06/16")).to.equal(5.4);
   });
 
   it("should have a method that returns how many minutes they were active for a given day", function () {
-    expect(userActivity.userMinutesActiveByDay("2019/06/17")).to.equal(168);
+    expect(userActivity.givenDayMinutesActive("2019/06/17")).to.equal(168);
   });
 
   it("should have a method that returns how many minutes active they averaged over a week", function () {
-    expect(userActivity.weekHoursActive()).to.equal(168.1);
+    expect(userActivity.getWeeklyMinutesActive()).to.equal(168.1);
   });
 
   it("should have a method that returns boolean for if they reached their step goal for a given day", function () {
@@ -139,7 +139,7 @@ describe("User Hydration", () => {
   });
 
   it("should have a method that returns avg number of steps taken for all users for given date", function () {
-    expect(userActivity.allUsersAverageStepsTaken("2019/06/15")).to.equal(5,091);
+    expect(userActivity.allUsersAverageStepsTaken("2019/06/15")).to.equal(5091);
   });
 
   it("should have a method that returns avg number of minutes active for all users for given date", function () {
