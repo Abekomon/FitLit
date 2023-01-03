@@ -27,6 +27,7 @@ const form = document.querySelector(".form")
 let userData;
 let sleepData;
 let hydrationData;
+let activityData;
 let userRepository;
 let currentUser;
 let currentView = ".activity-widgets-container"
@@ -38,6 +39,7 @@ function fetchApiCalls() {
     userData = data[0].userData.map((user) => new User(user));
     sleepData = data[1];
     hydrationData = data[2];
+    activityData = data[3];
     loadhandler();
   });
 }
