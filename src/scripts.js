@@ -5,6 +5,7 @@ import returnDataPromises from "./apiCalls";
 import Hydration from "./Hydration";
 import Sleep from "./Sleep";
 import Chart from 'chart.js/auto';
+import { hydrationChartInfo, sleepChartInfo } from './chartInfo'
 
 //// query selectors
 const userInfoCard = document.querySelector(".user-info");
@@ -110,24 +111,7 @@ function displayTodaysHydration(userHydration) {
 function displayWeekHydration(userHydration) {
   weekHydrationCard.innerHTML = `<canvas id="weeklyHydrationChart"></canvas>`
   const ctx = document.getElementById('weeklyHydrationChart').getContext('2d');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
-      datasets: [{
-        label: `Ounces of water consumed daily after ${userHydration.weekHydration()[0].date}` ,
-        data: userHydration.weekHydration().map(item => item.numOunces),
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
+  new Chart(ctx, hydrationChartInfo(userHydration));
   
 }
 
@@ -151,40 +135,11 @@ function displayTodaySleep(userSleep) {
 function displayWeekSleep(userSleep){
   weekSleepCard.innerHTML = `<canvas id="weeklySleepChart"></canvas>`
   let sleepChartCanvas = document.getElementById('weeklySleepChart').getContext('2d');
-
-  let hoursSleptData = {
-    label: `Hours Slept week starting ${userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date}`,
-    data: userSleep.getWeeklyHoursSlept(userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date).map(item => item.hoursSlept),
-    lineTension: 0,
-    fill: false,
-    borderColor: 'blue'
-  };
-  let sleepQualityData = {
-    label: `Sleep Quality Week Starting ${userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date}`,
-    data: userSleep.getWeeklySleepQuality(userSleep.userSleepInfo[userSleep.userSleepInfo.length - 1].date).map(item => item.sleepQuality),
-    lineTension: 0,
-    fill: false,
-    borderColor: 'green'
-  };
-  let sleepData = {
-    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-    datasets: [hoursSleptData, sleepQualityData]
-  };
-  let chartOptions = {
-    legend: {
-      display: true,
-      position: 'top',
-      labels: {
-        boxWidth: 80,
-        fontColor: 'black'
-      }
-    }
-  };
-
+  let chartInfo = sleepChartInfo(userSleep);
   new Chart(sleepChartCanvas, {
     type: 'line',
-    data: sleepData,
-    options: chartOptions
+    data: chartInfo.sleepData,
+    options: chartInfo.chartOptions
   });
 }
 
