@@ -12,19 +12,44 @@
     <aside class="sidebar">
       <h1 class="welcome-user-title"></h1>
       <p class="user-info"></p>
+      <form class="form">
+        <p class="form-title">Enter your activity data here</p>
+        <label for="input1">Date:</label>
+        <input type="text" id="input1" name="input1">
+        <label for="input2">Steps Walked:</label>
+        <input type="text" id="input2" name="input2">
+        <label for="input3">Minutes Active:</label>
+        <input type="text" id="input3" name="input3">
+        <label for="input4">Flights of Stairs Climbed</label>
+        <input type="text" id="input4" name="input4">
+        <input type="submit" value="Submit">
+      </form>
     </aside>
-    <main class="widgets-container">
-      <section class="non-sleep-widgets-container">
-        <section class="steps-widget card"></section>
-        <section class="hydration1-widget card"></section>
-        <section class="hydration2-widget card">
-          <canvas id="weeklyHydrationChart"></canvas>
+    <main>
+      <header>
+        <button class="activity-button">Activity</button>
+        <button class="sleep-button">Sleep</button>
+        <button class="hydration-button">Hydration</button>
+      </header>
+      <section class="widgets-container">
+        <section class="activity-widgets-container">
+          <section class="activity1-widget card">today's stats</section>
+          <section class="activity2-widget card">distance walked</section>
+          <section class="activity3-widget card">Rankings</section>
+          <section class="activity4-widget card">weekly view</section>
         </section>
-      </section>
-      <section class="sleep-widgets-container">
-        <section class="sleep1-widget card"></section>
-        <section class="sleep2-widget card"></section>
-        <section class="sleep3-widget card"></section>
+        <section class="hydration-widgets-container hide">
+          <section class="steps-widget card"></section>
+          <section class="hydration1-widget card"></section>
+          <section class="hydration2-widget card">
+            <canvas id="weeklyHydrationChart"></canvas>
+          </section>
+        </section>
+        <section class="sleep-widgets-container hide">
+          <section class="sleep1-widget card"></section>
+          <section class="sleep2-widget card"></section>
+          <section class="sleep3-widget card"></section>
+        </section>
       </section>
     </main>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->

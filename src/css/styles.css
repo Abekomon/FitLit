@@ -43,11 +43,12 @@ body {
   text-align:center;
 }
 
+header {
+  height:10vh;
+}
 .widgets-container {
   width:80vw;
-  height:100vh;
-  display:flex;
-  flex-direction: row;
+  height:90vh;
 }
 
 .step-goal-widget-title {
@@ -59,26 +60,27 @@ body {
   font-size: 18px;
 }
 
-.non-sleep-widgets-container{
-  width:40vw;
-  height: 100vh;
+.hydration-widgets-container,.sleep-widgets-container,.activity-widgets-container{
+  height: 100%;
+  width:100%;
   display:flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: row;
   align-items:center;
   justify-content:space-around;
 }
 
-.sleep-widgets-container{
+/* .sleep-widgets-container{
   width:40vw;
   height: 100vh;
   display:flex;
   flex-direction: column;
   align-items:center;
   justify-content:space-around;
-}
+} */
 
 .card{
-  height:30vh;
+  height:35vh;
   width:30vw;
   text-align: center;
   border-radius: 30px;
@@ -109,4 +111,13 @@ body {
 .sleep1-widget > p, .sleep2-widget > p {
   padding-top: 20px;
   font-size: 4vw;
+}
+
+.form {
+  display:flex;
+  flex-direction: column;
+}
+
+.hide {
+  display: none;
 }

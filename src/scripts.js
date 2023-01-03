@@ -15,6 +15,13 @@ const weekHydrationCard = document.querySelector(".hydration2-widget");
 const weekSleepCard = document.querySelector(".sleep3-widget");
 const todaySleepCard = document.querySelector(".sleep2-widget");
 const allTimeSleepCard = document.querySelector(".sleep1-widget");
+const sleepSection = document.querySelector(".sleep-widgets-container")
+const activitySection = document.querySelector(".activity-widgets-container")
+const hydrationSection = document.querySelector(".hydration-widgets-container")
+const activityButton = document.querySelector(".activity-button");
+const sleepButton = document.querySelector(".sleep-button");
+const hydrationButton = document.querySelector(".hydration-button");
+const form = document.querySelector(".form")
 
 ////Global Variables
 let userData;
@@ -22,6 +29,7 @@ let sleepData;
 let hydrationData;
 let userRepository;
 let currentUser;
+let currentView = ".activity-widgets-container"
 
 
 ////functions
@@ -188,7 +196,61 @@ function updateWelcomeText() {
   welcomeTitle.innerText = `Welcome ${currentUser.getFirstName()}`;
 }
 
+function changeView(newView){
+  document.querySelector(currentView).classList.toggle("hide")
+  document.querySelector(newView).classList.toggle("hide")
+  currentView = newView
+}
+
+function changeForm(data){
+  if(data === "activity"){
+    form.innerHTML = `<p class="form-title">Enter your activity data here</p>
+    <label for="input1">Date:</label>
+    <input type="text" id="input1" name="input1">
+    <label for="input2">Steps Walked:</label>
+    <input type="text" id="input2" name="input2">
+    <label for="input3">Minutes Active:</label>
+    <input type="text" id="input3" name="input3">
+    <label for="input4">Flights of Stairs Climbed</label>
+    <input type="text" id="input4" name="input4">
+    <input type="submit" value="Submit">`
+  }
+  if(data === "sleep") {
+    form.innerHTML = `<p class="form-title">Enter your sleep data here</p>
+    <label for="input1">Date:</label>
+    <input type="text" id="input1" name="input1">
+    <label for="input2">Hours Slept:</label>
+    <input type="text" id="input2" name="input2">
+    <label for="input3">Sleep Quality:</label>
+    <input type="text" id="input3" name="input3">
+    <input type="submit" value="Submit">`
+  }
+  if(data === "hydration"){
+    form.innerHTML = `<p class="form-title">Enter your hydration data here</p>
+    <label for="input1">Date:</label>
+    <input type="text" id="input1" name="input1">
+    <label for="input2">Ounces Drank:</label>
+    <input type="text" id="input2" name="input2">
+    <input type="submit" value="Submit">`
+  }
+}
+
 ///// event listeners
 window.addEventListener("load", () => {
   fetchApiCalls();
 });
+
+activityButton.addEventListener("click",()=>{
+  changeView(".activity-widgets-container")
+  changeForm("activity")
+})
+
+sleepButton.addEventListener("click",()=>{
+  changeView(".sleep-widgets-container")
+  changeForm("sleep")
+})
+
+hydrationButton.addEventListener("click",()=>{
+  changeView(".hydration-widgets-container")
+  changeForm("hydration")
+})
