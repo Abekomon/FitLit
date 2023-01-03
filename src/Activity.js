@@ -1,6 +1,6 @@
 class Activity {
   constructor(currentUser, data) {
-    this.userActivityInfo = data.filter(
+    this.userActivityInfo = data.activityData.filter(
       (day) => day.userID === currentUser.id
     );
     this.currentUser = currentUser;
