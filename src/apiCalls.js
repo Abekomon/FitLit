@@ -8,6 +8,7 @@ export default function returnDataPromises(){
     const fetchUsers = fetchData("users")
     const fetchSleep = fetchData("sleep")
     const fetchHydration = fetchData("hydration")
+    const fetchActivity = fetchData("activity")
 
-    return Promise.all([fetchUsers, fetchSleep, fetchHydration])
+    return Promise.all([fetchUsers, fetchSleep, fetchHydration, fetchActivity])
 }
