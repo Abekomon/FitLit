@@ -24,6 +24,7 @@ const activityButton = document.querySelector(".activity-button");
 const sleepButton = document.querySelector(".sleep-button");
 const hydrationButton = document.querySelector(".hydration-button");
 const form = document.querySelector(".form")
+const rankingsCard = document.querySelector(".activity3-widget")
 
 ////Global Variables
 let userData;
@@ -98,7 +99,7 @@ function displayStepsGoalComparison(numberRanked) {
 
 function displayActivityWidgets() {
   let userActivity = new Activity(currentUser, activityData)
-  
+  displayTodaysActivityRanking(userActivity)
 }
 
 
@@ -198,6 +199,29 @@ function changeForm(data){
     <input type="text" id="input2" name="input2">
     <input type="submit" value="Submit">`
   }
+}
+
+function displayTodaysActivityRanking(userActivity){
+  let mostRecentActivity = userActivity.userActivityInfo[userActivity.userActivityInfo.length-1]
+  let todaysActivityData = activityData.activityData.filter(day => day.date === mostRecentActivity.date)
+  rankingsCard.innerHTML = `
+  <h2 class="activity-ranking-title">Today's Rankings</h2>
+  <p class="activity-ranking">
+  Steps: ${todaysActivityData
+    .sort((a,b) => b.numSteps - a.numSteps)
+    .indexOf(mostRecentActivity)} out of ${userRepository.users.length}
+  </p>
+  <p class="activity-ranking">
+  Minutes Active: ${todaysActivityData
+    .sort((a,b) => b.minutesActive - a.minutesActive)
+    .indexOf(mostRecentActivity)} out of ${userRepository.users.length}
+  </p>
+  <p class="activity-ranking">
+  Flights of Stairs Climbed: ${todaysActivityData
+    .sort((a,b) => b.flightsOfStairs - a.flightsOfStairs)
+    .indexOf(mostRecentActivity)} out of ${userRepository.users.length}
+  </p>
+  `
 }
 
 ///// event listeners

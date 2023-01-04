@@ -51,11 +51,11 @@ header {
   height:90vh;
 }
 
-.step-goal-widget-title {
+.step-goal-widget-title, .activity-ranking-title {
   margin-bottom: 20px;
 }
 
-.steps-widget-info {
+.steps-widget-info, .activity-ranking {
   line-height: 2;
   font-size: 18px;
 }
