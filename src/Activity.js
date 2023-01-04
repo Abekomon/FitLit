@@ -29,6 +29,11 @@ class Activity {
       }, 0) / 7).toFixed(1))
   }
 
+    stairClimbRecord() {
+    let sorted = this.userActivityInfo.sort((a,b) => {return b.flightsOfStairs - a.flightsOfStairs})
+    return sorted[0].flightsOfStairs
+  }
+  
   allUsersAverageStairsClimbed (date) {
     let specificDateData = this.masterData.activityData.filter((day) => day.date === date)
 
@@ -62,7 +67,7 @@ class Activity {
     return Number((totalMinutesActiveForTheDay/specificDateData.length).toFixed(1))
   }
 
-}
-
+};
 
 export default Activity;
+
