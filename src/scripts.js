@@ -22,6 +22,7 @@ const mostRecentDaysMilesWalkedCard = document.querySelector(".activity2-widget"
 const sleepSection = document.querySelector(".sleep-widgets-container")
 const activitySection = document.querySelector(".activity-widgets-container")
 const hydrationSection = document.querySelector(".hydration-widgets-container")
+const weeklyActivityCard = document.querySelector(".activity4-widget")
 const activityButton = document.querySelector(".activity-button");
 const sleepButton = document.querySelector(".sleep-button");
 const hydrationButton = document.querySelector(".hydration-button");
@@ -100,6 +101,7 @@ function displayStepsGoalComparison(numberRanked) {
 
 function displayActivityWidgets() {
   let userActivity = new Activity(currentUser, activityData)
+  displayWeeklyActivity(userActivity);
   displayMostRecentDaysActivity(userActivity)
   displayMostRecentDaysMilesWalked(userActivity)
 }
@@ -176,6 +178,16 @@ function displayAllTimeSleep(userSleep) {
   allTimeSleepCard.innerHTML = `<h2 class="all-time-sleep">
   Sleep All-Time</h2>
     <p> ${userSleep.averageHoursSlept()} hours </p> <p> ${userSleep.averageSleepQuality()} out of 5 </p>`;
+}
+
+function displayWeeklyActivity(data){
+  const weeklySteps = data.getWeeklyStats("numSteps");
+  const weeklyMinutes = data.getWeeklyStats("minutesActive");
+  const weeklyStairs = data.getWeeklyStats("flightsOfStairs");
+  weeklyActivityCard.innerHTML = `<h2>Weekly View</h2>
+    <p>Total Steps: ${weeklySteps}  (Average per day: ${(weeklySteps / 7).toFixed(1)})</p>
+    <p>Total Minutes Active: ${weeklyMinutes}  (Average per day: ${(weeklyMinutes / 7).toFixed(1)})</p>
+    <p>Total Stairs: ${weeklyStairs}  (Average per day: ${(weeklyStairs / 7).toFixed(1)})</p>`
 }
 
 function updateWelcomeText() {

@@ -91,12 +91,16 @@ describe("User Activity", () => {
     expect(userActivity.milesWalked("2019/06/16")).to.equal(5.4);
   });
 
-  it("should have a method that returns how many minutes they were active for a given day", function () {
-    expect(userActivity.givenDayMinutesActive("2019/06/17")).to.equal(168);
+  it("should have a method that returns the relevant stat on a given day", function () {
+    expect(userActivity.givenDayStats("2019/06/17", "numSteps")).to.equal(14329);
+    expect(userActivity.givenDayStats("2019/06/17", "minutesActive")).to.equal(168);
+    expect(userActivity.givenDayStats("2019/06/17", "flightsOfStairs")).to.equal(18);
   });
 
-  it("should have a method that returns how many minutes active they averaged over a week", function () {
-    expect(userActivity.getWeeklyMinutesActive()).to.equal(168.1);
+  it("should have a method that returns the weekly sum of a given stat over a week", function () {
+    expect(userActivity.getWeeklyStats("numSteps")).to.equal(65341);
+    expect(userActivity.getWeeklyStats("minutesActive")).to.equal(1177);
+    expect(userActivity.getWeeklyStats("flightsOfStairs")).to.equal(113);
   });
 
   it("should have a method that returns boolean for if they reached their step goal for a given day", function () {
