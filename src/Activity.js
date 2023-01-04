@@ -1,5 +1,6 @@
 class Activity {
   constructor(currentUser, data) {
+    this.masterData = data
     this.userActivityInfo = data.activityData.filter(
       (day) => day.userID === currentUser.id
     );
@@ -26,6 +27,16 @@ class Activity {
       .reduce((acc, curr) => {
         return acc += curr.minutesActive
       }, 0) / 7).toFixed(1))
+  }
+
+  allUsersAverageStairsClimbed (date) {
+    let specificDateData = this.masterData.activityData.filter((day) => day.date === date)
+
+    let totalFlightsOfStairsForTheDay = specificDateData.reduce((acc, item) => {
+      acc+=item.flightsOfStairs
+      return acc
+    },0)
+    return Number((totalFlightsOfStairsForTheDay/specificDateData.length).toFixed(1))
   }
 
 }
