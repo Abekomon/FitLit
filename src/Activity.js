@@ -51,6 +51,17 @@ class Activity {
     return Number((totalStepsTakenForTheDay/specificDateData.length).toFixed(1))
   }
 
+  allUsersAverageMinutesActive(date) {
+    let specificDateData = this.masterData.activityData.filter((day) => day.date === date)
+
+    let totalMinutesActiveForTheDay = specificDateData.reduce((acc, item) => {
+      acc+=item.minutesActive
+      return acc
+    },0)
+
+    return Number((totalMinutesActiveForTheDay/specificDateData.length).toFixed(1))
+  }
+
 }
 
 
