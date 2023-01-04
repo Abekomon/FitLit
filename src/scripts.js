@@ -17,6 +17,7 @@ const weekHydrationCard = document.querySelector(".hydration2-widget");
 const weekSleepCard = document.querySelector(".sleep3-widget");
 const todaySleepCard = document.querySelector(".sleep2-widget");
 const allTimeSleepCard = document.querySelector(".sleep1-widget");
+const mostRecentDaysActivityCard = document.querySelector(".activity1-widget")
 const sleepSection = document.querySelector(".sleep-widgets-container")
 const activitySection = document.querySelector(".activity-widgets-container")
 const hydrationSection = document.querySelector(".hydration-widgets-container")
@@ -98,9 +99,20 @@ function displayStepsGoalComparison(numberRanked) {
 
 function displayActivityWidgets() {
   let userActivity = new Activity(currentUser, activityData)
-  
+  displayMostRecentDaysActivity(userActivity)
 }
 
+function displayMostRecentDaysActivity(userActivity) {
+  console.log("accessing data", )
+  mostRecentDaysActivityCard.innerHTML = `
+  <h2 class ="most-recent-activity-card-title">Most Recent Day Stats</h2>
+  <p class="most-recent-day-stats-results"> 
+  Number of Steps: ${userActivity.userActivityInfo.reverse()[0].numSteps}
+  <br>
+  Number of Minutes Active: ${userActivity.userActivityInfo.reverse()[0].minutesActive}
+  </p>
+  `
+}
 
 function displayHydrationWidgets() {
   let userHydration = new Hydration(currentUser, hydrationData);
