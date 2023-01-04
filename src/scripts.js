@@ -6,6 +6,7 @@ import Hydration from "./Hydration";
 import Sleep from "./Sleep";
 import Chart from 'chart.js/auto';
 import { hydrationChartInfo, sleepChartInfo } from './chartInfo'
+import Activity from "./Activity";
 
 //// query selectors
 const userInfoCard = document.querySelector(".user-info");
@@ -53,6 +54,7 @@ function loadhandler() {
   updateWelcomeText();
   displayHydrationWidgets();
   displaySleepWidgets();
+  displayActivityWidgets()
 }
 
 function generateRandomIndex() {
@@ -93,6 +95,12 @@ function displayStepsGoalComparison(numberRanked) {
   </p>
   `;
 }
+
+function displayActivityWidgets() {
+  let userActivity = new Activity(currentUser, activityData)
+  
+}
+
 
 function displayHydrationWidgets() {
   let userHydration = new Hydration(currentUser, hydrationData);
