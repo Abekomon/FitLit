@@ -29,7 +29,11 @@ class Activity {
       }, 0) / 7).toFixed(1))
   }
 
-    stairClimbRecord() {
+  dailyStepGoalHit(date){
+    return this.currentUser.dailyStepGoal <= this.userActivityInfo.find(day => day.date === date).numSteps
+  }
+
+  stairClimbRecord() {
     let sorted = this.userActivityInfo.sort((a,b) => {return b.flightsOfStairs - a.flightsOfStairs})
     return sorted[0].flightsOfStairs
   }
