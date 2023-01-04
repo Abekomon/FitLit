@@ -15,18 +15,17 @@ class Activity {
       }).numSteps * currentStride) / 5280).toFixed(1))
   }
   
-  givenDayMinutesActive(givenDate) {
+  givenDayStats(givenDate, activity) {
     return this.userActivityInfo
-      .find(day => day.date === givenDate)
-      .minutesActive
+      .find(day => day.date === givenDate)[activity]
   }
 
-  getWeeklyMinutesActive() {
-    return Number((this.userActivityInfo
+  getWeeklyStats(activity) {
+    return this.userActivityInfo
       .slice(-7)
       .reduce((acc, curr) => {
-        return acc += curr.minutesActive
-      }, 0) / 7).toFixed(1))
+        return acc += curr[activity]
+      }, 0)
   }
 
   dailyStepGoalHit(date){

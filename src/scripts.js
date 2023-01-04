@@ -17,9 +17,12 @@ const weekHydrationCard = document.querySelector(".hydration2-widget");
 const weekSleepCard = document.querySelector(".sleep3-widget");
 const todaySleepCard = document.querySelector(".sleep2-widget");
 const allTimeSleepCard = document.querySelector(".sleep1-widget");
+const mostRecentDaysActivityCard = document.querySelector(".activity1-widget")
+const mostRecentDaysMilesWalkedCard = document.querySelector(".activity2-widget")
 const sleepSection = document.querySelector(".sleep-widgets-container")
 const activitySection = document.querySelector(".activity-widgets-container")
 const hydrationSection = document.querySelector(".hydration-widgets-container")
+const weeklyActivityCard = document.querySelector(".activity4-widget")
 const activityButton = document.querySelector(".activity-button");
 const sleepButton = document.querySelector(".sleep-button");
 const hydrationButton = document.querySelector(".hydration-button");
@@ -100,8 +103,29 @@ function displayStepsGoalComparison(numberRanked) {
 function displayActivityWidgets() {
   let userActivity = new Activity(currentUser, activityData)
   displayTodaysActivityRanking(userActivity)
+  displayWeeklyActivity(userActivity);
+  displayMostRecentDaysActivity(userActivity)
+  displayMostRecentDaysMilesWalked(userActivity)
 }
 
+function displayMostRecentDaysActivity(userActivity) {
+  console.log("accessing data", )
+  mostRecentDaysActivityCard.innerHTML = `
+  <h2 class ="most-recent-activity-card-title">Most Recent Day Stats</h2>
+  <p class="most-recent-day-stats-results"> 
+  Number of Steps: ${userActivity.userActivityInfo.reverse()[0].numSteps}
+  <br>
+  Number of Minutes Active: ${userActivity.userActivityInfo.reverse()[0].minutesActive}
+  </p>
+  `
+}
+
+function displayMostRecentDaysMilesWalked(userActivity) {
+  mostRecentDaysMilesWalkedCard.innerHTML = `
+  <h2 class ="most-recent-miles-walked-card-title">Most Recent Day Miles Walked</h2>
+  <p class="most-recent-days-miles-walked-results"> ${Number((((userActivity.userActivityInfo.reverse()[0].numSteps) * (currentUser.strideLength))/5280).toFixed(1))} miles</p>
+  `
+}
 
 function displayHydrationWidgets() {
   let userHydration = new Hydration(currentUser, hydrationData);
@@ -156,6 +180,16 @@ function displayAllTimeSleep(userSleep) {
   allTimeSleepCard.innerHTML = `<h2 class="all-time-sleep">
   Sleep All-Time</h2>
     <p> ${userSleep.averageHoursSlept()} hours </p> <p> ${userSleep.averageSleepQuality()} out of 5 </p>`;
+}
+
+function displayWeeklyActivity(data){
+  const weeklySteps = data.getWeeklyStats("numSteps");
+  const weeklyMinutes = data.getWeeklyStats("minutesActive");
+  const weeklyStairs = data.getWeeklyStats("flightsOfStairs");
+  weeklyActivityCard.innerHTML = `<h2>Weekly View</h2>
+    <p>Total Steps: ${weeklySteps}  (Average per day: ${(weeklySteps / 7).toFixed(1)})</p>
+    <p>Total Minutes Active: ${weeklyMinutes}  (Average per day: ${(weeklyMinutes / 7).toFixed(1)})</p>
+    <p>Total Stairs: ${weeklyStairs}  (Average per day: ${(weeklyStairs / 7).toFixed(1)})</p>`
 }
 
 function updateWelcomeText() {
