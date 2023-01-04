@@ -28,7 +28,11 @@ class Activity {
       }, 0) / 7).toFixed(1))
   }
 
-}
+  stairClimbRecord() {
+    let sorted = this.userActivityInfo.sort((a,b) => {return b.flightsOfStairs - a.flightsOfStairs})
+    return sorted[0].flightsOfStairs
+  }
 
+};
 
 export default Activity;
