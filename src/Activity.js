@@ -36,7 +36,19 @@ class Activity {
       acc+=item.flightsOfStairs
       return acc
     },0)
+
     return Number((totalFlightsOfStairsForTheDay/specificDateData.length).toFixed(1))
+  }
+
+  allUsersAverageStepsTaken(date) {
+    let specificDateData = this.masterData.activityData.filter((day) => day.date === date)
+
+    let totalStepsTakenForTheDay = specificDateData.reduce((acc, item) => {
+      acc+=item.numSteps
+      return acc
+    },0)
+
+    return Number((totalStepsTakenForTheDay/specificDateData.length).toFixed(1))
   }
 
 }
