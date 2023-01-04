@@ -17,6 +17,8 @@ const weekHydrationCard = document.querySelector(".hydration2-widget");
 const weekSleepCard = document.querySelector(".sleep3-widget");
 const todaySleepCard = document.querySelector(".sleep2-widget");
 const allTimeSleepCard = document.querySelector(".sleep1-widget");
+const mostRecentDaysActivityCard = document.querySelector(".activity1-widget")
+const mostRecentDaysMilesWalkedCard = document.querySelector(".activity2-widget")
 const sleepSection = document.querySelector(".sleep-widgets-container")
 const activitySection = document.querySelector(".activity-widgets-container")
 const hydrationSection = document.querySelector(".hydration-widgets-container")
@@ -100,8 +102,28 @@ function displayStepsGoalComparison(numberRanked) {
 function displayActivityWidgets() {
   let userActivity = new Activity(currentUser, activityData)
   displayWeeklyActivity(userActivity);
+  displayMostRecentDaysActivity(userActivity)
+  displayMostRecentDaysMilesWalked(userActivity)
 }
 
+function displayMostRecentDaysActivity(userActivity) {
+  console.log("accessing data", )
+  mostRecentDaysActivityCard.innerHTML = `
+  <h2 class ="most-recent-activity-card-title">Most Recent Day Stats</h2>
+  <p class="most-recent-day-stats-results"> 
+  Number of Steps: ${userActivity.userActivityInfo.reverse()[0].numSteps}
+  <br>
+  Number of Minutes Active: ${userActivity.userActivityInfo.reverse()[0].minutesActive}
+  </p>
+  `
+}
+
+function displayMostRecentDaysMilesWalked(userActivity) {
+  mostRecentDaysMilesWalkedCard.innerHTML = `
+  <h2 class ="most-recent-miles-walked-card-title">Most Recent Day Miles Walked</h2>
+  <p class="most-recent-days-miles-walked-results"> ${Number((((userActivity.userActivityInfo.reverse()[0].numSteps) * (currentUser.strideLength))/5280).toFixed(1))} miles</p>
+  `
+}
 
 function displayHydrationWidgets() {
   let userHydration = new Hydration(currentUser, hydrationData);
