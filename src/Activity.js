@@ -33,6 +33,13 @@ class Activity {
     return this.currentUser.dailyStepGoal <= this.userActivityInfo.find(day => day.date === date).numSteps
   }
 
+  daysStepGoalReached() {
+    const goalReached = this.userActivityInfo.filter(steps => {
+      return steps.numSteps >= this.currentUser.dailyStepGoal
+    })
+    return goalReached
+  }
+
   stairClimbRecord() {
     let sorted = this.userActivityInfo.sort((a,b) => {return b.flightsOfStairs - a.flightsOfStairs})
     return sorted[0].flightsOfStairs
