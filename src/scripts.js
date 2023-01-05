@@ -60,13 +60,22 @@ function fetchApiCalls() {
     sleepData = data[1];
     hydrationData = data[2];
     activityData = data[3];
+    userRepository = new UserRepository(userData);
+    randomizeCurrentUser();
+    loadhandler();
+  });
+}
+
+function postGetRequest() {
+  returnDataPromises().then((data) => {
+    sleepData = data[1];
+    hydrationData = data[2];
+    activityData = data[3];
     loadhandler();
   });
 }
 
 function loadhandler() {
-  userRepository = new UserRepository(userData);
-  randomizeCurrentUser();
   displayCurrentUserInfo();
   compareAndDisplayStepsGoal();
   updateWelcomeText();
@@ -294,7 +303,7 @@ function activityPost() {
     }
   })
   .then(response => response.json())
-  .then(data => console.log(data))
+  .then(postGetRequest())
 }
 
 function sleepPost() {
@@ -307,7 +316,7 @@ function sleepPost() {
     }
   })
   .then(response => response.json())
-  .then(data => console.log(data))
+  .then(postGetRequest())
 }
 
 function hydrationPost() {
@@ -320,7 +329,7 @@ function hydrationPost() {
     }
   })
   .then(response => response.json())
-  .then(data => console.log(data))
+  .then(postGetRequest())
 }
 
 ///// event listeners
