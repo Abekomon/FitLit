@@ -39,7 +39,7 @@ const sleepHoursForm = document.querySelector("#sleepHours")
 const sleepQualityForm = document.querySelector("#sleepQuality")
 const sleepSubmitForm = document.querySelector("#sleepSubmit")
 const hydrationDateForm = document.querySelector("#hydrationDate")
-const hydrationHoursForm = document.querySelector("#hydrationOunces")
+const hydrationOuncesForm = document.querySelector("#hydrationOunces")
 const hydrationSubmitForm = document.querySelector("#hydrationSubmit")
 const rankingsCard = document.querySelector(".activity3-widget")
 
@@ -257,6 +257,72 @@ function displayTodaysActivityRanking(userActivity){
   `
 }
 
+function activityFormData() {
+  return {
+    userID: currentUser.id,
+    date: activityDateForm.value.replaceAll("-", "/"),
+    numSteps: Number(activityStepsForm.value),
+    minutesActive: Number(activityMinutesForm.value),
+    flightsOfStairs: Number(activityStairsForm.value),
+  }
+}
+
+function sleepFormData() {
+  return {
+    userID: currentUser.id,
+    date: sleepDateForm.value.replaceAll("-", "/"),
+    hoursSlept: Number(sleepHoursForm.value),
+    sleepQuality: Number(sleepQualityForm.value),
+  }
+}
+
+function hydrationFormData() {
+  return {
+    userID: currentUser.id,
+    date: hydrationDateForm.value.replaceAll("-", "/"),
+    numOunces: Number(hydrationOuncesForm.value),
+  }
+}
+
+function activityPost() {
+  const postData = activityFormData()
+  fetch("http://localhost:3001/api/v1/activity", {
+    method: "POST",
+    body: JSON.stringify(postData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+}
+
+function sleepPost() {
+  const postData = sleepFormData()
+  fetch("http://localhost:3001/api/v1/sleep", {
+    method: "POST",
+    body: JSON.stringify(postData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+}
+
+function hydrationPost() {
+  const postData = hydrationFormData()
+  fetch("http://localhost:3001/api/v1/hydration", {
+    method: "POST",
+    body: JSON.stringify(postData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+}
+
 ///// event listeners
 window.addEventListener("load", () => {
   fetchApiCalls();
@@ -275,4 +341,19 @@ sleepButton.addEventListener("click",()=>{
 hydrationButton.addEventListener("click",()=>{
   changeView(".hydration-widgets-container")
   changeForm("hydration")
+})
+
+activitySubmitForm.addEventListener("click", (e) => {
+  e.preventDefault()
+  activityPost()
+})
+
+sleepSubmitForm.addEventListener("click", (e) => {
+  e.preventDefault()
+  sleepPost()
+})
+
+hydrationSubmitForm.addEventListener("click", (e) => {
+  e.preventDefault()
+  hydrationPost()
 })
