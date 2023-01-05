@@ -26,7 +26,21 @@ const weeklyActivityCard = document.querySelector(".activity4-widget")
 const activityButton = document.querySelector(".activity-button");
 const sleepButton = document.querySelector(".sleep-button");
 const hydrationButton = document.querySelector(".hydration-button");
-const form = document.querySelector(".form")
+const sleepForm = document.querySelector("#formSleep")
+const hydrationForm = document.querySelector("#formHydration")
+const activityForm = document.querySelector("#formActivity")
+const activityDateForm = document.querySelector("#activityDate")
+const activityStepsForm = document.querySelector("#activitySteps")
+const activityMinutesForm = document.querySelector("#activityMinutes")
+const activityStairsForm = document.querySelector("#activityStairs")
+const activitySubmitForm = document.querySelector("#activitySubmit")
+const sleepDateForm = document.querySelector("#sleepDate")
+const sleepHoursForm = document.querySelector("#sleepHours")
+const sleepQualityForm = document.querySelector("#sleepQuality")
+const sleepSubmitForm = document.querySelector("#sleepSubmit")
+const hydrationDateForm = document.querySelector("#hydrationDate")
+const hydrationOuncesForm = document.querySelector("#hydrationOunces")
+const hydrationSubmitForm = document.querySelector("#hydrationSubmit")
 const rankingsCard = document.querySelector(".activity3-widget")
 
 ////Global Variables
@@ -46,13 +60,22 @@ function fetchApiCalls() {
     sleepData = data[1];
     hydrationData = data[2];
     activityData = data[3];
+    userRepository = new UserRepository(userData);
+    randomizeCurrentUser();
+    loadhandler();
+  });
+}
+
+function postGetRequest() {
+  returnDataPromises().then((data) => {
+    sleepData = data[1];
+    hydrationData = data[2];
+    activityData = data[3];
     loadhandler();
   });
 }
 
 function loadhandler() {
-  userRepository = new UserRepository(userData);
-  randomizeCurrentUser();
   displayCurrentUserInfo();
   compareAndDisplayStepsGoal();
   updateWelcomeText();
@@ -204,34 +227,19 @@ function changeView(newView){
 
 function changeForm(data){
   if(data === "activity"){
-    form.innerHTML = `<p class="form-title">Enter your activity data here</p>
-    <label for="input1">Date:</label>
-    <input type="text" id="input1" name="input1">
-    <label for="input2">Steps Walked:</label>
-    <input type="text" id="input2" name="input2">
-    <label for="input3">Minutes Active:</label>
-    <input type="text" id="input3" name="input3">
-    <label for="input4">Flights of Stairs Climbed</label>
-    <input type="text" id="input4" name="input4">
-    <input type="submit" value="Submit">`
+    sleepForm.classList.add('hide')
+    hydrationForm.classList.add('hide')
+    activityForm.classList.remove('hide')
   }
   if(data === "sleep") {
-    form.innerHTML = `<p class="form-title">Enter your sleep data here</p>
-    <label for="input1">Date:</label>
-    <input type="text" id="input1" name="input1">
-    <label for="input2">Hours Slept:</label>
-    <input type="text" id="input2" name="input2">
-    <label for="input3">Sleep Quality:</label>
-    <input type="text" id="input3" name="input3">
-    <input type="submit" value="Submit">`
+    hydrationForm.classList.add('hide')
+    activityForm.classList.add('hide')
+    sleepForm.classList.remove('hide')
   }
   if(data === "hydration"){
-    form.innerHTML = `<p class="form-title">Enter your hydration data here</p>
-    <label for="input1">Date:</label>
-    <input type="text" id="input1" name="input1">
-    <label for="input2">Ounces Drank:</label>
-    <input type="text" id="input2" name="input2">
-    <input type="submit" value="Submit">`
+    sleepForm.classList.add('hide')
+    activityForm.classList.add('hide')
+    hydrationForm.classList.remove('hide')
   }
 }
 
@@ -258,6 +266,80 @@ function displayTodaysActivityRanking(userActivity){
   `
 }
 
+function activityFormData() {
+  return {
+    userID: currentUser.id,
+    date: activityDateForm.value.replaceAll("-", "/"),
+    numSteps: Number(activityStepsForm.value),
+    minutesActive: Number(activityMinutesForm.value),
+    flightsOfStairs: Number(activityStairsForm.value),
+  }
+}
+
+function sleepFormData() {
+  return {
+    userID: currentUser.id,
+    date: sleepDateForm.value.replaceAll("-", "/"),
+    hoursSlept: Number(sleepHoursForm.value),
+    sleepQuality: Number(sleepQualityForm.value),
+  }
+}
+
+function hydrationFormData() {
+  return {
+    userID: currentUser.id,
+    date: hydrationDateForm.value.replaceAll("-", "/"),
+    numOunces: Number(hydrationOuncesForm.value),
+  }
+}
+
+function activityPost() {
+  const postData = activityFormData()
+  fetch("http://localhost:3001/api/v1/activity", {
+    method: "POST",
+    body: JSON.stringify(postData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(response => response.json())
+  .then(postGetRequest())
+}
+
+function sleepPost() {
+  const postData = sleepFormData()
+  fetch("http://localhost:3001/api/v1/sleep", {
+    method: "POST",
+    body: JSON.stringify(postData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(response => {
+    if(response.ok){
+      console.log(response)
+      return response.json()
+    } else {
+      throw new Error(response.statusText)
+    }
+  })
+  .then(postGetRequest())
+  .catch(error => console.log(error))
+}
+
+function hydrationPost() {
+  const postData = hydrationFormData()
+  fetch("http://localhost:3001/api/v1/hydration", {
+    method: "POST",
+    body: JSON.stringify(postData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(response => response.json())
+  .then(postGetRequest())
+}
+
 ///// event listeners
 window.addEventListener("load", () => {
   fetchApiCalls();
@@ -276,4 +358,19 @@ sleepButton.addEventListener("click",()=>{
 hydrationButton.addEventListener("click",()=>{
   changeView(".hydration-widgets-container")
   changeForm("hydration")
+})
+
+activitySubmitForm.addEventListener("click", (e) => {
+  e.preventDefault()
+  activityPost()
+})
+
+sleepSubmitForm.addEventListener("click", (e) => {
+  e.preventDefault()
+  sleepPost()
+})
+
+hydrationSubmitForm.addEventListener("click", (e) => {
+  e.preventDefault()
+  hydrationPost()
 })

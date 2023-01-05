@@ -12,17 +12,35 @@
     <aside class="sidebar">
       <h1 class="welcome-user-title"></h1>
       <p class="user-info"></p>
-      <form class="form">
+      <form class="form" id="formActivity">
         <p class="form-title">Enter your activity data here</p>
         <label for="input1">Date:</label>
-        <input type="text" id="input1" name="input1">
+        <input type="date" id="activityDate" name="input1">
         <label for="input2">Steps Walked:</label>
-        <input type="text" id="input2" name="input2">
+        <input type="text" id="activitySteps" name="input2">
         <label for="input3">Minutes Active:</label>
-        <input type="text" id="input3" name="input3">
+        <input type="text" id="activityMinutes" name="input3">
         <label for="input4">Flights of Stairs Climbed</label>
-        <input type="text" id="input4" name="input4">
-        <input type="submit" value="Submit">
+        <input type="text" id="activityStairs" name="input4">
+        <input type="submit" id="activitySubmit" value="Submit">
+      </form>
+      <form class="hide form" id="formSleep">
+        <p class="form-title">Enter your sleep data here</p>
+        <label for="input1">Date:</label>
+        <input type="date" id="sleepDate" name="input1">
+        <label for="input2">Hours Slept:</label>
+        <input type="text" id="sleepHours" name="input2">
+        <label for="input3">Sleep Quality:</label>
+        <input type="text" id="sleepQuality" name="input3">
+        <input type="submit" id="sleepSubmit" value="Submit">
+      </form>
+      <form class="hide form" id="formHydration">
+        <p class="form-title">Enter your hydration data here</p>
+        <label for="input1">Date:</label>
+        <input type="date" id="hydrationDate" name="input1">
+        <label for="input2">Ounces Drank:</label>
+        <input type="text" id="hydrationOunces" name="input2">
+        <input type="submit" id="hydrationSubmit" value="Submit">
       </form>
     </aside>
     <main>
