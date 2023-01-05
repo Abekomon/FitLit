@@ -315,8 +315,16 @@ function sleepPost() {
       "Content-Type": "application/json"
     }
   })
-  .then(response => response.json())
+  .then(response => {
+    if(response.ok){
+      console.log(response)
+      return response.json()
+    } else {
+      throw new Error(response.statusText)
+    }
+  })
   .then(postGetRequest())
+  .catch(error => console.log(error))
 }
 
 function hydrationPost() {
