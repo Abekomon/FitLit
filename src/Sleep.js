@@ -1,8 +1,8 @@
 class Sleep {
   constructor(currentUser, data) {
-    this.userSleepInfo = data.sleepData.filter(
-      (day) => day.userID === currentUser.id
-    );
+    this.userSleepInfo = data.sleepData
+      .filter((day) => day.userID === currentUser.id)
+      .sort((a,b) => new Date(a.date) - new Date(b.date))
     this.currentUser = currentUser;
     this.sleepData = data.sleepData;
   }

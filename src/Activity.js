@@ -1,9 +1,9 @@
 class Activity {
   constructor(currentUser, data) {
     this.masterData = data
-    this.userActivityInfo = data.activityData.filter(
-      (day) => day.userID === currentUser.id
-    );
+    this.userActivityInfo = data.activityData
+      .filter((day) => day.userID === currentUser.id)
+      .sort((a,b) => new Date(a.date) - new Date(b.date))
     this.currentUser = currentUser;
   }
   

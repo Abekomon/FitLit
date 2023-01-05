@@ -1,8 +1,8 @@
 class Hydration {
   constructor(currentUser, data) {
-    this.userHydrationInfo = data.hydrationData.filter(
-      (day) => day.userID === currentUser.id
-    );
+    this.userHydrationInfo = data.hydrationData
+      .filter((day) => day.userID === currentUser.id)
+      .sort((a,b) => new Date(a.date) - new Date(b.date))
   }
 
   averageUserHydrationAllTime() {
