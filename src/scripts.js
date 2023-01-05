@@ -136,9 +136,9 @@ function displayMostRecentDaysActivity(userActivity) {
   mostRecentDaysActivityCard.innerHTML = `
   <h2 class ="most-recent-activity-card-title">Most Recent Day Stats</h2>
   <p class="most-recent-day-stats-results"> 
-  Number of Steps: ${userActivity.userActivityInfo.reverse()[0].numSteps}
+  Number of Steps: ${userActivity.userActivityInfo[userActivity.userActivityInfo.length-1].numSteps}
   <br>
-  Number of Minutes Active: ${userActivity.userActivityInfo.reverse()[0].minutesActive}
+  Number of Minutes Active: ${userActivity.userActivityInfo[userActivity.userActivityInfo.length-1].minutesActive}
   </p>
   `
 }
@@ -146,7 +146,7 @@ function displayMostRecentDaysActivity(userActivity) {
 function displayMostRecentDaysMilesWalked(userActivity) {
   mostRecentDaysMilesWalkedCard.innerHTML = `
   <h2 class ="most-recent-miles-walked-card-title">Most Recent Day Miles Walked</h2>
-  <p class="most-recent-days-miles-walked-results"> ${Number((((userActivity.userActivityInfo.reverse()[0].numSteps) * (currentUser.strideLength))/5280).toFixed(1))} miles</p>
+  <p class="most-recent-days-miles-walked-results"> ${Number((((userActivity.userActivityInfo[userActivity.userActivityInfo.length-1].numSteps) * (currentUser.strideLength))/5280).toFixed(1))} miles</p>
   `
 }
 
