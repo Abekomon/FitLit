@@ -230,16 +230,25 @@ function changeForm(data){
     sleepForm.classList.add('hide')
     hydrationForm.classList.add('hide')
     activityForm.classList.remove('hide')
+    activityButton.classList.add('focused')
+    hydrationButton.classList.remove('focused')
+    sleepButton.classList.remove('focused')
   }
   if(data === "sleep") {
     hydrationForm.classList.add('hide')
     activityForm.classList.add('hide')
     sleepForm.classList.remove('hide')
+    activityButton.classList.remove('focused')
+    hydrationButton.classList.remove('focused')
+    sleepButton.classList.add('focused')
   }
   if(data === "hydration"){
     sleepForm.classList.add('hide')
     activityForm.classList.add('hide')
     hydrationForm.classList.remove('hide')
+    activityButton.classList.remove('focused')
+    hydrationButton.classList.add('focused')
+    sleepButton.classList.remove('focused')
   }
 }
 

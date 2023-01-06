@@ -45,7 +45,21 @@ body {
 
 header {
   height:10vh;
+  display: flex;
 }
+
+.tab {
+  height: 100%;
+  flex-grow: 1;
+  font-size: 30px;
+  background: white;
+  border: none;
+}
+
+.focused {
+  background-color: #e1f1fd;
+}
+
 .widgets-container {
   width:80vw;
   height:90vh;
