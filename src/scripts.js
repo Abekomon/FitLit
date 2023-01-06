@@ -108,7 +108,16 @@ function randomizeCurrentUser() {
 }
 
 function displayCurrentUserInfo() {
+  let today = new Date();
+
+  let dd = String(today.getDate()).padStart(2, '0');
+  let mm = String(today.getMonth() + 1).padStart(2, '0'); 
+  let yyyy = today.getFullYear();
+
+  today = `${dd}/${mm}/${yyyy}`;
+
   userInfoCard.innerHTML = `
+  <p><span>Date:</span> ${today} </p>
   <p><span>Name:</span> ${currentUser.name} </p>
   <p><span>Address:</span> ${currentUser.address}</p>
   <p><span>Email:</span> ${currentUser.email}</p>
@@ -266,17 +275,17 @@ function displayTodaysActivityRanking(userActivity){
   <p class="activity-ranking">
   Steps: ${todaysActivityData
     .sort((a,b) => b.numSteps - a.numSteps)
-    .indexOf(mostRecentActivity)} out of ${userRepository.users.length}
+    .indexOf(mostRecentActivity)+1} out of ${userRepository.users.length}
   </p>
   <p class="activity-ranking">
   Minutes Active: ${todaysActivityData
     .sort((a,b) => b.minutesActive - a.minutesActive)
-    .indexOf(mostRecentActivity)} out of ${userRepository.users.length}
+    .indexOf(mostRecentActivity)+1} out of ${userRepository.users.length}
   </p>
   <p class="activity-ranking">
   Flights of Stairs Climbed: ${todaysActivityData
     .sort((a,b) => b.flightsOfStairs - a.flightsOfStairs)
-    .indexOf(mostRecentActivity)} out of ${userRepository.users.length}
+    .indexOf(mostRecentActivity)+1} out of ${userRepository.users.length}
   </p>
   `
 }
@@ -375,17 +384,17 @@ hydrationButton.addEventListener("click",()=>{
   changeForm("hydration")
 })
 
-activitySubmitForm.addEventListener("click", (e) => {
+activityForm.addEventListener("submit", (e) => {
   e.preventDefault()
   activityPost()
 })
 
-sleepSubmitForm.addEventListener("click", (e) => {
+sleepForm.addEventListener("submit", (e) => {
   e.preventDefault()
   sleepPost()
 })
 
-hydrationSubmitForm.addEventListener("click", (e) => {
+hydrationForm.addEventListener("submit", (e) => {
   e.preventDefault()
   hydrationPost()
 })
