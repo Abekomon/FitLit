@@ -15,32 +15,35 @@
       <form class="form" id="formActivity">
         <p class="form-title">Enter your activity data here</p>
         <label for="activityDate">Date:</label>
-        <input type="date" id="activityDate" name="input1">
+        <input type="date" id="activityDate" name="activityDate" min="2001-01-01" maxlength="10" required />
         <label for="activitySteps">Steps Walked:</label>
-        <input type="text" id="activitySteps" name="input2">
+        <input type="number" id="activitySteps" name="activitySteps" min="0" max="100000" maxlength="6" placeholder="4326" step="0.01" required />
         <label for="activityMinutes">Minutes Active:</label>
-        <input type="text" id="activityMinutes" name="input3">
+        <input type="number" id="activityMinutes" name="activityMinutes" min="0" max="1440" maxlength="4" placeholder="55.2" step="0.01" required />
         <label for="activityStairs">Flights of Stairs Climbed</label>
-        <input type="text" id="activityStairs" name="input4">
+        <input type="number" id="activityStairs" name="activityStairs" min="0" max="1000" maxlength="4" placeholder="23" step="0.01" required />
         <input type="submit" id="activitySubmit" value="Submit">
+        <input type="reset">
       </form>
       <form class="hide form" id="formSleep">
         <p class="form-title">Enter your sleep data here</p>
         <label for="sleepDate">Date:</label>
-        <input type="date" id="sleepDate" name="input1">
+        <input type="date" id="sleepDate" name="sleepDate" min="2001-01-01" maxlength="10" required>
         <label for="sleepHours">Hours Slept:</label>
-        <input type="text" id="sleepHours" name="input2">
+        <input type="number" id="sleepHours" name="sleepHours" min="0" max="24"  placeholder="8.75" step="0.01" required>
         <label for="sleepQuality">Sleep Quality:</label>
-        <input type="text" id="sleepQuality" name="input3">
+        <input type="number" id="sleepQuality" name="sleepQuality" min="0" max="5" maxlength="4" placeholder="0-5 scale" step="0.1" required>
         <input type="submit" id="sleepSubmit" value="Submit">
+        <input type="reset">
       </form>
       <form class="hide form" id="formHydration">
         <p class="form-title">Enter your hydration data here</p>
         <label for="hydrationDate">Date:</label>
-        <input type="date" id="hydrationDate" name="input1">
+        <input type="date" id="hydrationDate" name="hydrationDate" min="2001-01-01" maxlength="10" required>
         <label for="hydrationOunces">Ounces Drank:</label>
-        <input type="text" id="hydrationOunces" name="input2">
+        <input type="number" id="hydrationOunces" name="hydrationOunces" min="0" max="1000" maxlength="4" placeholder="41.25"  step="0.01" required>
         <input type="submit" id="hydrationSubmit" value="Submit">
+        <input type="reset">
       </form>
     </aside>
     <main>
