@@ -42,6 +42,7 @@ const hydrationDateForm = document.querySelector("#hydrationDate")
 const hydrationOuncesForm = document.querySelector("#hydrationOunces")
 const hydrationSubmitForm = document.querySelector("#hydrationSubmit")
 const rankingsCard = document.querySelector(".activity3-widget")
+const postErrorMessage = document.querySelector("#postErrorMessage")
 
 ////Global Variables
 let userData;
@@ -327,6 +328,7 @@ function hydrationFormData() {
 }
 
 function activityPost() {
+  postErrorMessage.innerText = ''
   const postData = activityFormData()
   fetch("http://localhost:3001/api/v1/activity", {
     method: "POST",
@@ -335,11 +337,22 @@ function activityPost() {
       "Content-Type": "application/json"
     }
   })
-  .then(response => response.json())
+  .then(response => {
+    if(response.ok){
+      return response.json()
+    } else {
+      throw new Error('Something went wrong with the server!!!!!')
+    }
+  })
   .then(postGetRequest())
+  .catch(error => {
+    console.error(error.message)
+    postErrorMessage.innerText = `Failed to get data`
+  })
 }
 
 function sleepPost() {
+  postErrorMessage.innerText = ''
   const postData = sleepFormData()
   fetch("http://localhost:3001/api/v1/sleep", {
     method: "POST",
@@ -350,17 +363,21 @@ function sleepPost() {
   })
   .then(response => {
     if(response.ok){
-      console.log(response)
       return response.json()
     } else {
-      throw new Error(response.statusText)
+      throw new Error('Something went wrong with the server!!!!!')
     }
   })
   .then(postGetRequest())
-  .catch(error => console.log(error))
+  .catch(error => {
+    console.error(error.message)
+    postErrorMessage.innerText = `Failed to get data`
+  })
+  
 }
 
 function hydrationPost() {
+  postErrorMessage.innerText = ''
   const postData = hydrationFormData()
   fetch("http://localhost:3001/api/v1/hydration", {
     method: "POST",
@@ -369,8 +386,18 @@ function hydrationPost() {
       "Content-Type": "application/json"
     }
   })
-  .then(response => response.json())
+  .then(response => {
+    if(response.ok){
+      return response.json()
+    } else {
+      throw new Error('Something went wrong with the server!!!!!')
+    }
+  })
   .then(postGetRequest())
+  .catch(error => {
+    console.error(error.message)
+    postErrorMessage.innerText = `Failed to get data`
+  })
 }
 
 ///// event listeners
@@ -407,3 +434,5 @@ hydrationForm.addEventListener("submit", (e) => {
   e.preventDefault()
   hydrationPost()
 })
+
+
