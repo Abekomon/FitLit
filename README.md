@@ -1,7 +1,7 @@
 # FitLit Starter Kit
 
 ### Abstract:
-This is an app for users to view and see their latest activity data, goals, and milestones.
+This is an app for users to view and see their latest activity data, goals, and milestones. Users also have the ability to input and live update their fitness progress through our dynamic API. 
 
 ### Installation Instructions
 1. Fork this project to your own Github account
@@ -10,13 +10,13 @@ This is an app for users to view and see their latest activity data, goals, and 
 4. On your terminal, `npm install`
 5. On your terminal, `npm start`
 6. Navigate to http://localhost:8080/
+7. Follow the instructions in this README to get your local server integrated to support the API [API Server Instructions](https://github.com/turingschool-examples/fitlit-api)
 
 ### Preview of the App
-![Screen Shot 2022-12-12 at 1 14 13 PM](https://user-images.githubusercontent.com/111095858/207122747-40286099-5d2f-4cbf-b891-2cf726abba2b.png)
+![Application load state](https://user-images.githubusercontent.com/111095858/211420371-c8545b81-2607-451f-b048-cfdddd036f23.png)
 
 ### Context
-Our team is in week 3 of Turing mod 2. We had six days to complete the project. We spent 20-25 hours total
-working as a team.
+Our team is finishing the second mod at Turing School of Software and Design. We had a week to complete the project. We spent 20-25 hours total working as a team.
 
 ### Contributors
 - Adam Hughes [LinkedIn](https://www.linkedin.com/in/front-end-adam/), [Github](https://github.com/ajh0050)<br>
@@ -30,7 +30,8 @@ working as a team.
 - Create a dashboard that is easy to use and displays information in a clear way.
 - Craft code with clean style, using small functions that show trends toward DRYness and SRP.
 - Implement a robust testing suite using TDD.
-- Make network requests to retrieve data.
+- Make network requests to retrieve and manipulate data.
+- Ensure your app follows best practices for accessibility
 
 ### Technology Used
 - Javascript
@@ -42,12 +43,3 @@ working as a team.
 - Git/GitHub
 - Slack/Zoom 
 - LigthHouse & Wave
-
-
-
-
-
-
-
-
-
