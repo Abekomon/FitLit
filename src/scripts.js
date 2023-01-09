@@ -137,7 +137,7 @@ function displayMostRecentDaysActivity(userActivity) {
   <h2 class ="most-recent-activity-card-title">Most Recent Day Stats</h2>
   <p class="most-recent-day-stats-results"> 
   Number of Steps: ${userActivity.userActivityInfo[userActivity.userActivityInfo.length-1].numSteps}
-  <br>
+  </p><p>
   Number of Minutes Active: ${userActivity.userActivityInfo[userActivity.userActivityInfo.length-1].minutesActive}
   </p>
   `

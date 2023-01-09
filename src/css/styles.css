@@ -17,13 +17,14 @@ body {
 
 .sidebar {
   width: 20vw;
-  height: 100vh;
+  min-height: 100%;
   padding: 5px;
   display:flex;
   flex-direction: column;
   border-right: solid 2px;
   color: #FAF9F6;
   background-color: #4663ac;
+  overflow:inherit;
 }
 
 .sidebar .welcome-user-title {
@@ -84,15 +85,6 @@ header {
   justify-content:space-around;
 }
 
-/* .sleep-widgets-container{
-  width:40vw;
-  height: 100vh;
-  display:flex;
-  flex-direction: column;
-  align-items:center;
-  justify-content:space-around;
-} */
-
 .card{
   height:35vh;
   width:30vw;
@@ -104,7 +96,7 @@ header {
 }
 
 .card h2 {
-  font-size: 2.15vw;
+  font-size: 25px;
 }
 
 .hydration1-widget {
@@ -113,18 +105,33 @@ header {
   font-size: 20px;
 }
 
-.hydration1-widget p{
+.hydration1-widget p {
   padding-top: 3vh;
-  font-size: 7vw;
+  font-size: 90px;
 }
 
 .sleep2-widget, .sleep1-widget {
   padding-top: 2vh;
 }
 
-.sleep1-widget > p, .sleep2-widget > p {
+.sleep-widgets-container p {
   padding-top: 20px;
-  font-size: 4vw;
+  font-size: 40px;
+}
+
+.activity2-widget p {
+ font-size: 75px;
+ margin-top: 10px;
+}
+
+.activity1-widget p {
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+.activity4-widget p {
+  font-size: 18px;
+  margin-top: 8px;
 }
 
 .form {
@@ -132,6 +139,37 @@ header {
   flex-direction: column;
 }
 
+#activitySubmit, #hydrationSubmit, #sleepSubmit {
+  margin-top: 5px;
+}
+
 .hide {
   display: none;
+}
+
+@media screen and (max-width: 850px) {
+  body {
+    display: block;
+  }
+
+  .card {
+    margin: 20px auto;
+    width: 70%;
+  }
+
+  .widgets-container, .sidebar {
+    width: 100%
+  }
+
+  .sidebar .user-info {
+    margin: 0;
+  }
+
+  .sidebar p {
+    margin: 7px 0;
+  }
+
+  .form input {
+    height: 30px;
+  }
 }
