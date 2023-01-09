@@ -30,8 +30,9 @@ Our team is finishing the second mod at Turing School of Software and Design. We
 - Create a dashboard that is easy to use and displays information in a clear way.
 - Craft code with clean style, using small functions that show trends toward DRYness and SRP.
 - Implement a robust testing suite using TDD.
-- Make network requests to retrieve and manipulate data.
-- Ensure your app follows best practices for accessibility
+- Work with a local server and make network requests to API endpoints to retrieve and manipulate data. 
+- Ensure your app follows best practices for accessibility.
+- Implement feedback to improve product and process.
 
 ### Technology Used
 - Javascript
