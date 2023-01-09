@@ -147,6 +147,12 @@ header {
   display: none;
 }
 
+#postErrorMessage {
+  margin: 15px;
+  text-align: center;
+}
+
+
 @media screen and (max-width: 850px) {
   body {
     display: block;
@@ -173,3 +179,4 @@ header {
     height: 30px;
   }
 }
+
