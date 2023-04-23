@@ -1,5 +1,3 @@
-# FitLit Starter Kit
-
 ### Abstract:
 This is an app for users to view and see their latest activity data, goals, and milestones. Users also have the ability to input and live update their fitness progress through our dynamic API. 
 
